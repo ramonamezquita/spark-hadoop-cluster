@@ -1,6 +1,6 @@
 Containerized Hadoop cluster with Spark.
 
-# Platforms supported
+## Platforms supported
 ARM64 (Apple Silicon) and AMD64 (Intel)
 
 # Start Hadoop cluster

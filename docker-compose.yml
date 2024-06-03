@@ -1,5 +1,3 @@
-version: "3"
-
 services:
   namenode:
     image: ramonamez/hadoop-namenode:hadoop3.3.1-java8-python3.10

@@ -14,7 +14,7 @@ RUN apt update -y && apt upgrade -y && apt-get install -y \
     libc6-dev \ 
     libbz2-dev \ 
     libffi-dev \ 
-    zlib1g-dev && 
+    zlib1g-dev
 
 
 # Compile python from source - avoid unsupported library problems

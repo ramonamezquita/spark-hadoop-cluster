@@ -14,6 +14,7 @@ RUN apt update -y && apt upgrade -y && apt-get install -y \
     libc6-dev \ 
     libbz2-dev \ 
     libffi-dev \ 
+    liblzma-dev \
     zlib1g-dev
 
 

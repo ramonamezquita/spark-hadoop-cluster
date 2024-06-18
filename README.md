@@ -80,7 +80,7 @@ authentication is something to keep in mind. Different authentication methods be
 
 > [!IMPORTANT] 
 > AWS credentials must be set for all containers. This can be achieved by
-> installing the ``aws-cli`` on every container. 
+> installing the ``aws-cli`` on every container and doing ``aws configure``.
 
 
 3. You'll probably still needed to install more jars for example:

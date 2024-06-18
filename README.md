@@ -79,7 +79,7 @@ authentication is something to keep in mind. Different authentication methods be
 [Authenticating with Amazon Redshift integration for Apache Spark](https://docs.aws.amazon.com/emr/latest/ReleaseGuide/emr-spark-redshift-auth.html)
 
 > [!NOTE]  
-> Highlights information that users should take into account, even when skimming.
+> AWS credentials must be set in all nodes.
 
 
 3. You'll probably still needed to install more jars for example:

@@ -28,12 +28,13 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends \
 # Installing Spark through Pyspark requires:
 # - setting SPARK_HOME manually
 # - setting SPARK_CONF_DIR manually
-# - logs are stored in /tmp/spark-events.
+# - logs are stored in hdfs at /shared/spark-logs.
 ENV PYSPARK_HADOOP_VERSION=3
 RUN pip3 install py4j
 RUN pip3 install pyspark
 ENV SPARK_HOME=/usr/local/lib/python3.10/site-packages/pyspark/
 ENV SPARK_CONF_DIR=${SPARK_HOME}/conf
+RUN hdfs dfs -mkdir -p /shared/spark-logs
 
 
 # --- Run Hadoop entrypoint ---

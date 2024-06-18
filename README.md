@@ -4,7 +4,7 @@ Containerized Hadoop cluster with Spark.
 ARM64 (Apple Silicon) and AMD64 (Intel)
 
 
-## Spark Settings
+## Spark Conf
 
 Installing Spark through Pyspark requires setting ``SPARK_HOME`` 
 and ``SPARK_CONF_DIR`` manually. These are set to the location of the 

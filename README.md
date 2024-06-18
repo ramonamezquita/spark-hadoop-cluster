@@ -4,7 +4,7 @@ Containerized Hadoop cluster with Spark.
 ARM64 (Apple Silicon) and AMD64 (Intel)
 
 
-## Spark Considerations
+## Spark Settings
 
 ### Pyspark installation
 

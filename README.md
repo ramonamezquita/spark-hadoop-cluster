@@ -42,7 +42,7 @@ unzip redshift-jdbc42-2.1.0.29.zip
 rm redshift-jdbc42-2.1.0.29.zip
 ```
 
-2.  Use the [https://github.com/spark-redshift-community/spark-redshift?tab=readme-ov-file]           (RedshiftData Source for Apache Spark - Community Edition). 
+2.  Use the [RedshiftData Source for Apache Spark - Community Edition](https://github.com/spark-redshift-community/spark-redshift?tab=readme-ov-file)  .
     
 * Init Spark with the ``spark.jars.packages`` configuration set to
 ``com.amazon.redshift:redshift-jdbc42:2.1.0.24,org.apache.spark:spark-avro_2.12:3.5.0,io.github.spark-redshift-community:spark-redshift_2.12:6.2.0-spark_3.5``.
@@ -61,8 +61,7 @@ df = spark.read \
 * Since this datasource unloads data to S3 as an intermedaite step, 
 authentication is something to keep in mind. Different authentication
 methods between Spark and Redshift are datailed here:
-(https://docs.aws.amazon.com/emr/latest/ReleaseGuide/emr-spark-redshift-auth.html)[Authenticating with Amazon Redshift integration for Apache Spark]
-
+[Authenticating with Amazon Redshift integration for Apache Spark](https://docs.aws.amazon.com/emr/latest/ReleaseGuide/emr-spark-redshift-auth.html)
 
 
 3. You'll probably still needed to install more, for example:

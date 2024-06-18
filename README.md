@@ -84,7 +84,7 @@ authentication is something to keep in mind. Different authentication methods be
 > ``aws configure``.
 
 
-3. You'll probably still needed to install more jars for example:
+3. You'll probably still need to install more jars for example:
 * aws-java-sdk-s3-1.12.741.jar
 * aws-java-sdk-dynamodb-1.12.741.jar
 

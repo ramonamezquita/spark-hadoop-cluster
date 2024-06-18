@@ -6,25 +6,23 @@ ARM64 (Apple Silicon) and AMD64 (Intel)
 
 ## Spark Considerations
 
-### After install
+### Pyspark installation
 
   * Installing Spark through Pyspark requires setting ``SPARK_HOME`` 
   and ``SPARK_CONF_DIR`` manually. These are set to the location of the 
-  pyspark installation directory (**/usr/local/lib/python3.10/site-packages/pyspark/**)
+  pyspark installation directory (**/usr/local/lib/python3.10/site-packages/pyspark/**).
 
-  
-  
 
 ### Logs
 
-  * Logs be stored in hdfs by setting the ``spark.history.fs.logDirectory`` property to 
-  **hdfs://namenode:9000/shared/spark-logs** in ``spark-defaults.conf``
+  * Logs are stored in hdfs by setting the ``spark.history.fs.logDirectory`` property to 
+  **hdfs://namenode:9000/shared/spark-logs** in ``spark-defaults.conf``.
 
 
 ### Jars
 
-  * For the sake of simplicity, define ``spark.extraClassPath``. 
-  Tipically it is ${SPARK_HOME}/jars.
+  * ``spark.extraClassPath`` is set to  ``SPARK_HOME``/jars.
+  
 
 
 ## Redshift Connection

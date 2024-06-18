@@ -78,8 +78,8 @@ df = spark.read \
 authentication is something to keep in mind. Different authentication methods between Spark and Redshift are datailed here:
 [Authenticating with Amazon Redshift integration for Apache Spark](https://docs.aws.amazon.com/emr/latest/ReleaseGuide/emr-spark-redshift-auth.html)
 
-**Note**
-Credentials must be set in all nodes.
+> **Note**
+> Credentials must be set in all nodes.
 
 
 3. You'll probably still needed to install more jars for example:

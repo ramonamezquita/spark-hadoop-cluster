@@ -19,10 +19,7 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends \
       libexpat1-dev \
       libxslt1.1 \
       gnuplot \
-      vim \
-      zip \
-      libpq-dev
-      
+
 
 #  --- Install Spark ---
 # Installing Spark through Pyspark requires:

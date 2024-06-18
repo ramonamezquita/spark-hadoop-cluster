@@ -17,7 +17,10 @@ RUN apt update -y && apt upgrade -y && apt-get install -y \
     libbz2-dev \ 
     libffi-dev \ 
     liblzma-dev \
-    zlib1g-dev
+    zlib1g-dev \
+    vim \
+    zip \
+    libpq-dev
 
 
 #  --- Install Python3.10 from source ---

@@ -30,58 +30,50 @@ ARM64 (Apple Silicon) and AMD64 (Intel)
 ### How to connect?
 
 
-  1.  Download all jar files provided by Amazon. 
-      Amazon provides a ZIP file containing every needed jar at 
-      https://docs.aws.amazon.com/redshift/latest/mgmt/jdbc20-install.html.
-      Just download and uzip, that is
+1. Download all jar files provided by Amazon. 
+Amazon provides a ZIP file containing every needed jar at 
+https://docs.aws.amazon.com/redshift/latest/mgmt/jdbc20-install.html.
+Just download and uzip, that is
 
-      ```
-      cd $SPARK_HOME/jars
-      wget https://s3.amazonaws.com/redshift-downloads/drivers/jdbc/2.1.0.29/redshift-jdbc42-2.1.0.29.zip
-      unzip redshift-jdbc42-2.1.0.29.zip
-      rm redshift-jdbc42-2.1.0.29.zip
-      ```
+```
+cd $SPARK_HOME/jars
+wget https://s3.amazonaws.com/redshift-downloads/drivers/jdbc/2.1.0.29/redshift-jdbc42-2.1.0.29.zip
+unzip redshift-jdbc42-2.1.0.29.zip
+rm redshift-jdbc42-2.1.0.29.zip
+```
 
-    2. Use the [https://github.com/spark-redshift-community/spark-redshift?tab=readme-ov-file](Redshift Data Source for Apache Spark - Community Edition). 
-        * Init Spark with the ``spark.jars.packages`` configuration set to
-        ``com.amazon.redshift:redshift-jdbc42:2.1.0.24,org.apache.spark:spark-avro_2.12:3.5.0,io.github.spark-redshift-community:spark-redshift_2.12:6.2.0-spark_3.5``.
-
-        * Set the ``format`` option when reading from posrgres to ``io.github.spark_redshift_community.spark.redshift``. In PySpark,
-        
-        ```
-        df = spark.read \
-            .format("io.github.spark_redshift_community.spark.redshift") \
-            .option("url", "jdbc:redshift://redshifthost:5439/database?user=username&password=pass") \
-            .option("query", "select x, count(*) my_table group by x") \
-            .option("tempdir", "s3://path/for/temp/data") \
-            .load()
-        ```
-
-        * Since this datasource unloads data to S3 as an intermedaite step, 
-        authentication is something to keep in mind. Different authentication
-        methods between Spark and Redshift are datailed here:
-        (https://docs.aws.amazon.com/emr/latest/ReleaseGuide/emr-spark-redshift-auth.html)[Authenticating with Amazon Redshift integration for Apache Spark]
-
-
-
-
-
-
-
-
-
-
+2.  Use the [https://github.com/spark-redshift-community/spark-redshift?tab=readme-ov-file]           (RedshiftData Source for Apache Spark - Community Edition). 
     
-  
-  2. You'll probably still needed to install more, for example:
-        * aws-java-sdk-s3-1.12.741.jar
-        * aws-java-sdk-dynamodb-1.12.741.jar
+* Init Spark with the ``spark.jars.packages`` configuration set to
+``com.amazon.redshift:redshift-jdbc42:2.1.0.24,org.apache.spark:spark-avro_2.12:3.5.0,io.github.spark-redshift-community:spark-redshift_2.12:6.2.0-spark_3.5``.
 
-  3.  Also add the following propertes at core-site.xml (I am not sure if these are really necessary)
+* Set the ``format`` option when reading from posrgres to ``io.github.spark_redshift_community.spark.redshift``. In PySpark,
+        
+```
+df = spark.read \
+    .format("io.github.spark_redshift_community.spark.redshift") \
+    .option("url", "jdbc:redshift://redshifthost:5439/database?user=username&password=pass") \
+    .option("query", "select x, count(*) my_table group by x") \
+    .option("tempdir", "s3://path/for/temp/data") \
+    .load()
+```
 
-    <property><name>fs.s3.impl</name><value>org.apache.hadoop.fs.s3a.S3AFileSystem</value></property>
-    <property><name>fs.s3a.impl</name><value>org.apache.hadoop.fs.s3a.S3AFileSystem</value></property>
-    <property><name>fs.s3a.aws.credentials.provider</name><value>com.amazonaws.auth.DefaultAWSCredentialsProviderChain</value></property>
-    <property><name>fs.s3.aws.credentials.provider</name><value>com.amazonaws.auth.DefaultAWSCredentialsProviderChain</value></property>
+* Since this datasource unloads data to S3 as an intermedaite step, 
+authentication is something to keep in mind. Different authentication
+methods between Spark and Redshift are datailed here:
+(https://docs.aws.amazon.com/emr/latest/ReleaseGuide/emr-spark-redshift-auth.html)[Authenticating with Amazon Redshift integration for Apache Spark]
+
+
+
+3. You'll probably still needed to install more, for example:
+* aws-java-sdk-s3-1.12.741.jar
+* aws-java-sdk-dynamodb-1.12.741.jar
+
+4.  Also add the following propertes at core-site.xml (I am not sure if these are really necessary)
+
+<property><name>fs.s3.impl</name><value>org.apache.hadoop.fs.s3a.S3AFileSystem</value></property>
+<property><name>fs.s3a.impl</name><value>org.apache.hadoop.fs.s3a.S3AFileSystem</value></property>
+<property><name>fs.s3a.aws.credentials.provider</name><value>com.amazonaws.auth.DefaultAWSCredentialsProviderChain</value></property>
+<property><name>fs.s3.aws.credentials.provider</name><value>com.amazonaws.auth.DefaultAWSCredentialsProviderChain</value></property>
 
 

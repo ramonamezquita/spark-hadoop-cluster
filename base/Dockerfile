@@ -1,5 +1,7 @@
 FROM wxwmatt/hadoop-release:2.1.0-hadoop3.3.1-java8
 
+
+# --- Base OS dependencies ---
 RUN apt update -y && apt upgrade -y && apt-get install -y \ 
     procps \
     wget \
@@ -18,14 +20,17 @@ RUN apt update -y && apt upgrade -y && apt-get install -y \
     zlib1g-dev
 
 
-# Compile python from source - avoid unsupported library problems
+#  --- Install Python3.10 from source ---
 RUN cd /usr/src && \
     wget https://www.python.org/ftp/python/3.10.0/Python-3.10.0.tgz && \
     tar xzf Python-3.10.0.tgz && \
     cd Python-3.10.0 && \
     ./configure --enable-optimizations && \
     make install
+RUN pip3 install wheel setuptools py4j
 
+
+# --- Run Hadoop entrypoint ---
 ENV HADOOP_CLASSPATH=${JAVA_HOME}/lib/tools.jar
 ADD entrypoint.sh /entrypoint.sh
 RUN chmod a+x /entrypoint.sh

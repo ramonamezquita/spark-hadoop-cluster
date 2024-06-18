@@ -1,13 +1,7 @@
 FROM ramonamez/hadoop-base:hadoop3.3.1-java8-python3.10
 
 
-RUN pip3 install wheel
-RUN pip3 install setuptools
-RUN pip3 install py4j
-RUN pip3 install pyspark
-RUN pip3 install numpy
-
-
+# --- More OS dependencies ---
 RUN DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends \
       gcc \
       git-core \
@@ -23,19 +17,31 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends \
       zlib1g-dev \
       libssl-dev \
       libexpat1-dev \
-      libxslt1.1\
-      gnuplot
+      libxslt1.1 \
+      gnuplot \
+      vim \
+      zip \
+      libpq-dev
+      
+
+#  --- Install Spark ---
+# Installing Spark through Pyspark requires:
+# - setting SPARK_HOME manually
+# - setting SPARK_CONF_DIR manually
+# - logs are stored in /tmp/spark-events.
+ENV PYSPARK_HADOOP_VERSION=3
+RUN pip3 install py4j
+RUN pip3 install pyspark
+ENV SPARK_HOME=/usr/local/lib/python3.10/site-packages/pyspark/
+ENV SPARK_CONF_DIR=${SPARK_HOME}/conf
 
 
+# --- Run Hadoop entrypoint ---
 HEALTHCHECK CMD curl -f http://localhost:9870/ || exit 1
-
 ENV HDFS_CONF_dfs_namenode_name_dir=file:///hadoop/dfs/name
 RUN mkdir -p /hadoop/dfs/name
 VOLUME /hadoop/dfs/name
-
 ADD run.sh /run.sh
 RUN chmod a+x /run.sh
-
 EXPOSE 9870
-
 CMD ["/run.sh"]

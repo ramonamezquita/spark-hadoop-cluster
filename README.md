@@ -6,8 +6,6 @@ ARM64 (Apple Silicon) and AMD64 (Intel)
 
 ## Spark Settings
 
-### Pyspark installation
-
 Installing Spark through Pyspark requires setting ``SPARK_HOME`` 
 and ``SPARK_CONF_DIR`` manually. These are set to the location of the 
 pyspark installation directory (**/usr/local/lib/python3.10/site-packages/pyspark/**).
@@ -65,7 +63,7 @@ spark = (
 )
 ```
 
-* Set the ``format`` option when reading from posrgres to ``io.github.spark_redshift_community.spark.redshift``. In PySpark,
+* Set the ``format`` to ``io.github.spark_redshift_community.spark.redshift``. In PySpark,
         
 ```python
 df = spark.read \
@@ -77,8 +75,7 @@ df = spark.read \
 ```
 
 * Since this datasource unloads data to S3 as an intermedaite step, 
-authentication is something to keep in mind. Different authentication
-methods between Spark and Redshift are datailed here:
+authentication is something to keep in mind. Different authentication methods between Spark and Redshift are datailed here:
 [Authenticating with Amazon Redshift integration for Apache Spark](https://docs.aws.amazon.com/emr/latest/ReleaseGuide/emr-spark-redshift-auth.html)
 
 

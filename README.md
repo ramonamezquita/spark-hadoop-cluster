@@ -79,8 +79,9 @@ authentication is something to keep in mind. Different authentication methods be
 [Authenticating with Amazon Redshift integration for Apache Spark](https://docs.aws.amazon.com/emr/latest/ReleaseGuide/emr-spark-redshift-auth.html)
 
 > [!IMPORTANT] 
-> AWS credentials must be set for all containers! This can be achieved by
-> installing ``aws-cli`` on every container and doing ``aws configure``.
+> On cluster mode, AWS credentials must be set for all containers! This can be 
+> achieved by installing ``aws-cli`` on every container and doing 
+> ``aws configure``.
 
 
 3. You'll probably still needed to install more jars for example:

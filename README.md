@@ -25,12 +25,16 @@ Logs are stored in hdfs by setting the ``spark.history.fs.logDirectory`` propert
 ### Verify installation
 
 You should be able to run any python script inside ``SPARK_HOME``/examples 
-either in local or cluster mode. For instance, try
+either in local or cluster mode. For instance,
 
 ```bash
 cd $SPARK_HOME
 spark-submit --master yarn --deploy-mode cluster examples/src/main/python/pi.py
 ```
+
+> [!IMPORTANT] 
+> In cluster mode, python dependencies must be installed in all nodes!
+
 
 ## Redshift Connection
 
@@ -79,7 +83,7 @@ authentication is something to keep in mind. Different authentication methods be
 [Authenticating with Amazon Redshift integration for Apache Spark](https://docs.aws.amazon.com/emr/latest/ReleaseGuide/emr-spark-redshift-auth.html)
 
 > [!IMPORTANT] 
-> On cluster mode, AWS credentials must be set for all containers! This can be 
+> In cluster mode, AWS credentials must be set for all containers! This can be 
 > achieved by installing ``aws-cli`` on every container and doing 
 > ``aws configure``.
 

@@ -1,0 +1,7 @@
+wheel 
+setuptools 
+py4j 
+pandas
+numpy
+sciki-learn
+pyspark

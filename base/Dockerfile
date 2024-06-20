@@ -23,14 +23,15 @@ RUN apt update -y && apt upgrade -y && apt-get install -y \
     libpq-dev
 
 
-#  --- Install Python3.10 from source ---
+#  --- Install Python3.10 from source and minimal requirements ---
 RUN cd /usr/src && \
     wget https://www.python.org/ftp/python/3.10.0/Python-3.10.0.tgz && \
     tar xzf Python-3.10.0.tgz && \
     cd Python-3.10.0 && \
     ./configure --enable-optimizations && \
     make install
-RUN pip3 install wheel setuptools py4j
+
+RUN pip3 install -r requirements.txt
 
 
 # --- Run Hadoop entrypoint ---

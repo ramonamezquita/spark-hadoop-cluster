@@ -55,7 +55,8 @@ rm redshift-jdbc42-2.1.0.29.zip
 
 2.  Use the [RedshiftData Source for Apache Spark - Community Edition](https://github.com/spark-redshift-community/spark-redshift?tab=readme-ov-file)  .
     
-* Init Spark with the ``spark.jars.packages`` configuration set to
+
+* 2.1 Init Spark with the ``spark.jars.packages`` configuration set to
 ``com.amazon.redshift:redshift-jdbc42:2.1.0.24,org.apache.spark:spark-avro_2.12:3.5.0,io.github.spark-redshift-community:spark-redshift_2.12:6.2.0-spark_3.5``. In PySpark,
 
 ```python
@@ -67,7 +68,7 @@ spark = (
 )
 ```
 
-* Set the ``format`` to ``io.github.spark_redshift_community.spark.redshift``. In PySpark,
+* 2.2 Set the ``format`` to ``io.github.spark_redshift_community.spark.redshift``. In PySpark,
         
 ```python
 df = spark.read \
@@ -78,7 +79,7 @@ df = spark.read \
     .load()
 ```
 
-* Since this datasource unloads data to S3 as an intermediate step, 
+* 2.3 Since this datasource unloads data to S3 as an intermediate step, 
 authentication is something to keep in mind. Different authentication methods between Spark and Redshift are datailed here:
 [Authenticating with Amazon Redshift integration for Apache Spark](https://docs.aws.amazon.com/emr/latest/ReleaseGuide/emr-spark-redshift-auth.html)
 

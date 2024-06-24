@@ -4,7 +4,7 @@ Containerized Hadoop cluster with Spark.
 ARM64 (Apple Silicon) and AMD64 (Intel)
 
 
-## Run locally
+## 🏃🏻‍♂️ Run locally
 Just docker-compose up the services with
 
 ```bash
@@ -13,11 +13,11 @@ docker-compose up
 
 This command will automatically pull and build the needed images 🐳.
 
-## Run remotely
+## ☁️ Run remotely
 A full guided tutorial on running all servives in mulitple hosts using AWS EC2
 instances through docker-swarm can be found here (not ready yet).
 
-## Verify installation
+## 🧐 Verify installation
 
 You should be able to run any python script inside ``SPARK_HOME``/examples 
 either in local or cluster mode. For instance,
@@ -31,7 +31,7 @@ spark-submit --master yarn --deploy-mode cluster examples/src/main/python/pi.py
 > In cluster mode, python dependencies must be installed in all nodes!
 
 
-## Important Variables.
+## ⚠️ Important Variables
 
 Installing Spark through Pyspark requires setting ``SPARK_HOME`` 
 and ``SPARK_CONF_DIR`` manually. These are set to the location of the 

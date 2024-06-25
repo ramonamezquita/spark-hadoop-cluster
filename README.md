@@ -33,9 +33,8 @@ spark-submit --master yarn --deploy-mode cluster examples/src/main/python/pi.py
 
 ## ⚠️ Important Variables
 
-Installing Spark through Pyspark requires setting ``SPARK_HOME`` 
-and ``SPARK_CONF_DIR`` manually. These are set to the location of the 
-pyspark installation directory (**/usr/local/lib/python3.10/site-packages/pyspark/**).
-Logs are stored in hdfs by setting the ``spark.history.fs.logDirectory`` property to 
-**hdfs://namenode:9000/shared/spark-logs** in ``spark-defaults.conf`` and 
-``spark.extraClassPath`` is set to  ``SPARK_HOME``/jars.
+Installing Spark through Pyspark with pip requires setting and creating 
+``SPARK_CONF_DIR`` manually. Adittionally,  Spark logs are stored in hdfs and 
+the jars class  path is set to  ``SPARK_HOME``/jars. Both of these are 
+defined in ``spark-defaults.conf`` through the ``spark.history.fs.logDirectory`` 
+and ``spark.driver.extraClassPath`` properties, respectively.

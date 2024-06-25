@@ -1,7 +1,6 @@
 wheel 
 setuptools 
 py4j 
-pandas
-numpy
-sciki-learn
-pyspark
+pandas>=1.4,<2.0
+numpy>=1.2,<2.0
+scikit-learn>=1.0.0

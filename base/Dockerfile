@@ -31,7 +31,9 @@ RUN cd /usr/src && \
     ./configure --enable-optimizations && \
     make install
 
-RUN pip3 install -r requirements.txt
+
+COPY requirements.txt /root/requirements.txt
+RUN pip3 install -r /root/requirements.txt
 
 
 # --- Run Hadoop entrypoint ---

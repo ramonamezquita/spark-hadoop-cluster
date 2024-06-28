@@ -6,7 +6,7 @@
 1. Download all jar files provided by Amazon. 
 Amazon provides a ZIP file containing every needed jar at 
 https://docs.aws.amazon.com/redshift/latest/mgmt/jdbc20-install.html.
-Just download and uzip, that is
+Just download and uzip.
 
 ```
 cd $SPARK_HOME/jars
@@ -15,11 +15,11 @@ unzip redshift-jdbc42-2.1.0.29.zip
 rm redshift-jdbc42-2.1.0.29.zip
 ```
 
-2.  Use the [RedshiftData Source for Apache Spark - Community Edition](https://github.com/spark-redshift-community/spark-redshift?tab=readme-ov-file)  .
+2.  Use the [RedshiftData Source for Apache Spark - Community Edition](https://github.com/spark-redshift-community/spark-redshift?tab=readme-ov-file).
     
 
 * 2.1 Init Spark with the ``spark.jars.packages`` configuration set to
-``com.amazon.redshift:redshift-jdbc42:2.1.0.24,org.apache.spark:spark-avro_2.12:3.5.0,io.github.spark-redshift-community:spark-redshift_2.12:6.2.0-spark_3.5``. In PySpark,
+``com.amazon.redshift:redshift-jdbc42:2.1.0.24,org.apache.spark:spark-avro_2.12:3.5.0,io.github.spark-redshift-community:spark-redshift_2.12:6.2.0-spark_3.5``.
 
 ```python
 spark = (
@@ -30,7 +30,7 @@ spark = (
 )
 ```
 
-* 2.2 Set the ``format`` to ``io.github.spark_redshift_community.spark.redshift``. In PySpark,
+* 2.2 Set the ``format`` to ``io.github.spark_redshift_community.spark.redshift``.
         
 ```python
 df = spark.read \
@@ -47,15 +47,28 @@ authentication is something to keep in mind. Different authentication methods be
 
 > [!IMPORTANT] 
 > In cluster mode, AWS credentials must be set for all containers! This can be 
-> achieved by installing ``aws-cli`` on every container and doing 
+> achieved by [installing](https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html) ``aws-cli`` on every container and doing 
 > ``aws configure``.
 
 
-3. You'll probably still need to install more jars for example:
+3. You'll probably still need to install the following jars available at 
+the Maven Central repository:
+
 * aws-java-sdk-s3-1.12.741.jar
 * aws-java-sdk-dynamodb-1.12.741.jar
 
-4.  Also add the following propertes at core-site.xml (I am not sure if these are really necessary)
+For example,
+
+```
+cd $SPARK_HOME/jars
+wget https://repo1.maven.org/maven2/com/amazonaws/aws-java-sdk-s3/1.12.741/aws-java-sdk-s3-1.12.741.jar
+```
+
+
+
+
+
+4. Finally, add the following properties to ``core-site.xml``.
 
 ```bash
 <property><name>fs.s3.impl</name><value>org.apache.hadoop.fs.s3a.S3AFileSystem</value></property>

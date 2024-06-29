@@ -20,7 +20,8 @@ RUN apt update -y && apt upgrade -y && apt-get install -y \
     zlib1g-dev \
     vim \
     zip \
-    libpq-dev
+    libpq-dev \
+    openssh-client
 
 
 #  --- Install Python3.10 from source and minimal requirements ---

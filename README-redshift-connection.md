@@ -1,10 +1,10 @@
-# Amazon Redshift integration for Apache Spark.
+# Amazon Redshift integration for Apache Spark
 
 The connection between Amazon Redshift and Apache Spark is done
 through the [RedshiftData Source for Apache Spark - Community Edition](https://github.com/spark-redshift-community/spark-redshift?tab=readme-ov-file). 
 Such taks can be accomplished using the following instructions.
 
-## Instructions.
+## Instructions
 
 1. Download all jar files provided by Amazon. 
 Amazon provides a ZIP file containing every needed jar at 

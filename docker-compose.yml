@@ -1,15 +1,13 @@
 services:
   namenode:
     image: ramonamez/hadoop-namenode:hadoop3.3.1-java8-python3.10
-    container_name: namenode
-    build: ./namenode
     restart: always
     ports:
       - 9870:9870
       - 9000:9000
-      - 8888:8888
+      - 9999:8888
     volumes:
-      - hadoop_namenode:/hadoop/dfs/name
+      - hadoop_namenode:/temp/hadoop/dfs/name
       - ./sync:/sync
     env_file:
       - ./config
@@ -24,8 +22,6 @@ services:
 
   resourcemanager:
     image: ramonamez/hadoop-resourcemanager:hadoop3.3.1-java8-python3.10
-    container_name: resourcemanager
-    build: ./resourcemanager
     restart: always
     ports:
       - 8088:8088
@@ -41,13 +37,9 @@ services:
 
   datanode:
     image: ramonamez/hadoop-datanode:hadoop3.3.1-java8-python3.10
-    container_name: datanode
-    build: ./datanode
     restart: always
-    ports:
-      - 9864:9864
     volumes:
-      - hadoop_datanode:/hadoop/dfs/data
+      - hadoop_datanode:/temp/hadoop/dfs/data
     environment:
       SERVICE_PRECONDITION: "namenode:9870"
     env_file:
@@ -60,11 +52,7 @@ services:
 
   nodemanager:
     image: ramonamez/hadoop-nodemanager:hadoop3.3.1-java8-python3.10
-    container_name: nodemanager
-    build: ./nodemanager
     restart: always
-    ports:
-      - 8042:8042
     environment:
       SERVICE_PRECONDITION: "namenode:9000 namenode:9870 datanode:9864 resourcemanager:8088"
     env_file:
@@ -77,8 +65,6 @@ services:
 
   historyserver:
     image: ramonamez/hadoop-historyserver:hadoop3.3.1-java8-python3.10
-    container_name: historyserver
-    build: ./historyserver
     restart: always
     ports:
       - 8188:8188

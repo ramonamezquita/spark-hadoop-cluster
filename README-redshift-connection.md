@@ -68,9 +68,6 @@ wget https://repo1.maven.org/maven2/com/amazonaws/aws-java-sdk-s3/1.12.741/aws-j
 ```
 
 
-
-
-
 4. Finally, add the following properties to ``core-site.xml``.
 
 ```bash

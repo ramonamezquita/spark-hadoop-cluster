@@ -2,9 +2,6 @@ FROM ramonamez/hadoop-base:hadoop3.3.1-java8-python3.10
 
 USER ${NONROOT}
 
-# ssh
-COPY --chown=${NONROOT}:${NONROOT} ssh /home/${NONROOT}/.ssh
-
 # jars
 COPY --chown=${NONROOT}:${NONROOT} jars ${SPARK_HOME}/jars
 
